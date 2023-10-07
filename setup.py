@@ -5,9 +5,10 @@ from pathlib import Path
 
 def get_req(filepath:str)->List[str]:
     req=[]
-    req=Path(filepath)
-    req=[re.replace("\n","") for re in req]
-    return req
+    with open(filepath) as file_obj:
+        req=file_obj.readlines()
+        req=[re.replace("\n","") for re in req]
+        return req
 
 setup(
     name='prac',
